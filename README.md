@@ -1,0 +1,2 @@
+# pug-template
+Pug template
