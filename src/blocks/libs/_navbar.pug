@@ -1,0 +1,8 @@
+mixin navbar-brand (text= '', href='#', classes='')
+    a.navbar-brand(href=`${href}` class=`${classes}`)= text
+
+mixin navbar(clasess='navbar-dark bg-dark')
+    nav.navbar(class=`${clasess}`)
+        .container-fluid
+            if block
+                block

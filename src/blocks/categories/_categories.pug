@@ -1,0 +1,10 @@
+mixin categories(value= 'Products')
+    .categories.p-4
+        h2.text-center.p-3= value
+        if block
+            block
+        else
+            .row
+                - for (var x = 0; x < 4; x++)
+                    .col-3
+                        +card()

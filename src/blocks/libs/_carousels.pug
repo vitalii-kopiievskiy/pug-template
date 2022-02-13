@@ -1,0 +1,51 @@
+-
+    var slides = [
+        {
+            src:'angular.jpg',
+            alt:'angular',
+            title: 'Angular',
+            subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, aliquid.'
+        },
+        {
+            src:'ngrx.jpg',
+            alt:'ngrx',
+            title: 'NGRx',
+            subtitle:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, aliquid.'
+        },
+        {
+            src:'nx.jpg',
+            alt:'nx',
+            title: 'Nx',
+            subtitle:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, aliquid.'
+        }
+    ]
+
+mixin cl(id='carouselSlide', items=slides, activeSlide= 2, controls='c', indicators='i')
+    .carousel.slide(data-bs-ride='carousel', id=`${id}`)
+        if (indicators === 'i')
+            .carousel-indicators
+                each item, index in items
+                    button(
+                        aria-current=(activeSlide === index + 1 ? true : false)
+                        class=(activeSlide === index + 1 ? "active" : '')
+                        type='button'
+                        data-bs-target=`#${id}`
+                        data-bs-slide-to=`${index}`
+                        aria-label=`Slide ${index + 1}`)
+        .carousel-inner
+            each item, index in items
+                .carousel-item(class=(activeSlide === index + 1 ? "active" : ''))
+                    +img(`${item.src}`, `${item.alt}`, 'd-block w-100')
+                    if (item.title || item.subtitle)
+                        .carousel-caption.d-none.d-md-block
+                            if (item.title)
+                                h5= item.title
+                            if (item.subtitle)
+                                p= item.subtitle
+        if (controls === 'c')
+            button.carousel-control-prev(type='button' data-bs-target=`#${id}` data-bs-slide='prev')
+                span.carousel-control-prev-icon(aria-hidden='true')
+                span.visually-hidden Previous
+            button.carousel-control-next(type='button' data-bs-target=`#${id}` data-bs-slide='next')
+                span.carousel-control-next-icon(aria-hidden='true')
+                span.visually-hidden Next

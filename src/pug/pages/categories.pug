@@ -1,0 +1,13 @@
+extends ../layout
+
+block content
+    +header
+        +navbar
+            +nav('Categories', 'navbar-nav flex-row')
+            +navbar-brand('GrandpaJS')
+            +btn('Sign in', 'dark')
+    main
+        +categories('Laptops')
+        +categories('Cars')
+    +footer(footItems_1, footItems_2, footItems_3)
+

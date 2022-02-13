@@ -1,0 +1,9 @@
+mixin footer(...footItems)
+    footer.bg-dark
+        if block
+            block
+        else
+            .row
+                - for (var x = 0; x < footItems.length; x++)
+                    .col-4
+                        +nav('', 'nav dark flex-column p-3', footItems[x])
